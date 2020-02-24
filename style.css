@@ -1,0 +1,56 @@
+#timertime {
+    margin-left: 30px;
+    color: rgb(218, 216, 224);
+}
+#timertext {
+    margin-left: 30px;
+    color: rgb(243, 242, 248);
+}
+.btn-outline-success{
+    color: white;
+    border: 2px solid white;
+}
+
+
+body {
+    background-color: rgb(248, 244, 244);
+}
+
+
+.container {
+    border: 2px solid rgb(240, 237, 233);
+    max-width: 960px;
+    margin: auto;
+    padding: 30px;
+    margin-top: 50px;
+    background-color:rgb(164, 59, 174);
+    border-radius: 10px;
+}
+
+.answer-btn {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 20px;
+    margin: 30px;
+}
+
+    .btn:hover {
+        border-color: white;
+}
+
+.start-btn, .next-btn {
+    font-size: 1.30 rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    margin: 30px 10px 10px 10px;
+}
+.hide {
+    display: none;
+
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
