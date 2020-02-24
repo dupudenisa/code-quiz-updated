@@ -107,7 +107,7 @@ function setNextQuestion() {
 
     questionLength = questions.length;
     
-    if(currentQuestionIndex == questionLength)
+    if(currentQuestionIndex == questionLength - 1)
     {
         finishedQuiz();
     }
@@ -193,7 +193,7 @@ function showFinalScore(){
 function highscore() {
 
     var initials = initialsId.value.trim();
-   
+   console.log(initials);
     finalScore.setAttribute("class", "hide");
     doneContainer.setAttribute("class","hide");
     highscoreContainer.removeAttribute("class", "hide");
