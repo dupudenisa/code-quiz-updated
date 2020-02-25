@@ -28,7 +28,7 @@ var answerButtonsElement = document.getElementById("answer-btn");
 var clear = document.getElementById("clear-btn");
 var highscoreBtn = document.getElementById("hs-btn");
 
-var highList = document.getElementById("highscores");
+var highList = document.getElementById("highlist");
 
 
 
@@ -98,7 +98,7 @@ function timeIt() {
     if (counter <= 0) {
       endQuiz();
     }
-  
+    
 
 }
 
@@ -160,7 +160,7 @@ function clickAnswer() {
      clearInterval(counter);
      QuestionContainer.setAttribute("class","hide")
      alert("You did not complete the Quiz in time. Please try again!")
-     location.reload();
+     //location.reload();
 }
 
 // end of finished quiz
@@ -168,20 +168,21 @@ function finishedQuiz(){
     alert("Congradulations!! You reached the end!")
     QuestionContainer.setAttribute("class","hide");
     doneContainer.removeAttribute("class","hide");
+    var score = counter;
     clearInterval(counter);
+    counter = score;
 
-    showFinalScore();
+    showFinalScore(score);
     
 }
 
-function showFinalScore(){
+function showFinalScore(score){
 
     var finalScore = document.getElementById("final-score");
     var submit = document.getElementById("submit-btn");
 
-    var score = counter;
+    
     finalScore.textContent = "Your final score is:" + score;
-    clearInterval(counter);
 
     finalScore.removeAttribute("class","hide");
     submit.addEventListener('click', highscore);
@@ -192,31 +193,39 @@ function showFinalScore(){
 // saving highscore
 function highscore() {
 
-    var initials = initialsId.value.trim();
-   console.log(initials);
-    finalScore.setAttribute("class", "hide");
-    doneContainer.setAttribute("class","hide");
-    highscoreContainer.removeAttribute("class", "hide");
+    var initialsLog = initialsId.value.trim();
+   console.log(initialsLog);
 
     
-    if (initials == "") {
+    if (initialsLog != "") {
+
+        finalScore.setAttribute("class", "hide");
+        doneContainer.setAttribute("class","hide");
+        highscoreContainer.removeAttribute("class", "hide");
+
         var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
         
 
         var Score = {
             scoreF: counter,
-            initials: initials
+            initials: initialsLog
         };
+
+        counter = 9999999;
+
+        console.log(initialsLog);
 
         highscores.push(Score);
         window.localStorage.setItem("highscores", JSON.stringify(highscores));
 
-        
         var li = document.createElement("li");
         li.textContent = Score.initials + " - " + Score.scoreF;
+        var highList = document.getElementById("highlist");
+        highList.appendChild(li);
+        
+        //window.location.reload();
     
         // display on page
-        highList.appendChild(li);
 
     }
 
